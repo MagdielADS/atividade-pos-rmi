@@ -13,22 +13,24 @@ import projeto.pos.rmi.server.CifraDeCesar;
  * Hello world!
  *
  */
-public class App {
-    public static void main( String[] args ){
+public class ServiceCifra { 
+    
+    
+    public String cifrar( String texto ){
         Registry registry;
         try {
             registry = LocateRegistry.getRegistry("localhost", 9999);
             CifraDeCesar c = (CifraDeCesar) registry.lookup("CifraDeCesar");
-            String frase = "A ligeira raposa saltou sobre o cachorro cansado";
+            
             int chave = 3;
-            String result = c.criptografar(frase, chave);
-            System.out.println(frase);
-            System.out.println(result);
+            
+            return c.criptografar(texto, chave);            
             
         } catch (RemoteException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServiceCifra.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NotBoundException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServiceCifra.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
 }
