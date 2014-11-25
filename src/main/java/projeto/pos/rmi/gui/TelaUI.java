@@ -12,9 +12,10 @@ public class TelaUI extends javax.swing.JFrame {
      * Creates new form TelaUI
      */
     public TelaUI() {
-        initComponents();
+        initComponents();        
         setResizable(false);
         setLocationRelativeTo(null);
+        cifrado.setEditable(false);        
     }      
 
     /**
