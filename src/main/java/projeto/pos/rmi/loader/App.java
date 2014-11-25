@@ -15,23 +15,20 @@ import projeto.pos.rmi.server.CifraDeCesar;
  */
 public class App {
     public static void main( String[] args ){
-//        Registry registry;
-//        try {
-//            registry = LocateRegistry.getRegistry("localhost", 9999);
-//            CifraDeCesar c = (CifraDeCesar) registry.lookup("CifraDeCesar");
-//            System.out.println(c.criptografar("Oi kelson", 3));
-//        } catch (RemoteException ex) {
-//            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (NotBoundException ex) {
-//            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        
-        String string = "Magdiel;bruno;matias";
-        String[] taai = string.split(";");
-        
-        
-        for(int i = 0; i < taai.length;i++){
-            System.out.println(taai[i]);
+        Registry registry;
+        try {
+            registry = LocateRegistry.getRegistry("localhost", 9999);
+            CifraDeCesar c = (CifraDeCesar) registry.lookup("CifraDeCesar");
+            String frase = "A ligeira raposa saltou sobre o cachorro cansado";
+            int chave = 3;
+            String result = c.criptografar(frase, chave);
+            System.out.println(frase);
+            System.out.println(result);
+            
+        } catch (RemoteException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NotBoundException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
