@@ -1,6 +1,5 @@
 package projeto.pos.rmi.loader;
 
-import java.rmi.AccessException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -15,14 +14,11 @@ import projeto.pos.rmi.server.CifraDeCesar;
  */
 public class ServiceCifra { 
     
-    
-    public String cifrar( String texto ){
+    public String cifrar( String texto, int chave ){
         Registry registry;
         try {
             registry = LocateRegistry.getRegistry("localhost", 9999);
-            CifraDeCesar c = (CifraDeCesar) registry.lookup("CifraDeCesar");
-            
-            int chave = 3;
+            CifraDeCesar c = (CifraDeCesar) registry.lookup("CifraDeCesar");            
             
             return c.criptografar(texto, chave);            
             

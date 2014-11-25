@@ -18,7 +18,7 @@ import java.rmi.server.UnicastRemoteObject;
  */
 public class CifraDeCesarImpl extends UnicastRemoteObject implements CifraDeCesar{
     
-    public CifraDeCesarImpl() throws RemoteException{
+    public CifraDeCesarImpl() throws RemoteException {
         super();
     }
     
